@@ -26,11 +26,11 @@ const images = [
 ];
 
 const ulElement = document.querySelector(".gallery");
-images.forEach((image) => {
-  const li = document.createElement("li");
-  const img = document.createElement("img");
-  img.src = image.url;
-  img.alt = image.alt;
-  li.append(img);
-  ulElement.append(li);
-});
+const markup = images
+  .map(
+    (image) =>
+      `<li><img src="${image.url}" alt="${image.alt}" width="300"></li>`
+  )
+  .join("");
+
+ulElement.insertAdjacentHTML("beforeend", markup);
